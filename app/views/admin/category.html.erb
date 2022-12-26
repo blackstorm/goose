@@ -1,1 +1,25 @@
-<h1>category</h1>
+<div class="container mt-4 mt-md-5">
+  <div class="row">
+    <div class="col-12 ">
+      <div class="p-2 bg-white rounded border">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Categories</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @categories.each do |c| %>
+            <tr>
+              <td class="col-9"><%= c.name %></td>
+              <td class="col-1"><%= c.created_at %></td>
+              <td class="col-1">Edit | Delete</td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

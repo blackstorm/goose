@@ -8778,7 +8778,7 @@ ${content}</tr>
   window.autosize = autosize_esm_default;
   var editor_controller_default = class extends Controller {
     connect() {
-      autosize_esm_default(document.getElementById("content"));
+      autosize_esm_default(document.getElementById("article_content"));
     }
   };
 

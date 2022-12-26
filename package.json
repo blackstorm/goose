@@ -7,14 +7,12 @@
     "@popperjs/core": "^2.11.6",
     "alpinejs": "^3.10.5",
     "autosize": "^5.0.2",
-    "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.2",
     "esbuild": "^0.16.10",
     "marked": "^4.2.5",
     "sass": "^1.57.1"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }
