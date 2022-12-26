@@ -7,6 +7,6 @@ window.autosize = autosize
 
 export default class extends Controller {
     connect() {
-        autosize(document.getElementById('content'));
+        autosize(document.getElementById('article_content'));
     }
 }

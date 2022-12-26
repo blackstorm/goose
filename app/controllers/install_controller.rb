@@ -1,0 +1,2 @@
+class InstallController < ApplicationController
+end

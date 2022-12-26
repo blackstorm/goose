@@ -6,41 +6,32 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body  style="background-color: #f6f8fa" >
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-      <div class="container-fluid">
-        <%= link_to "/admin", class: "navbar-brand d-flex align-items-center" do %>
-          <%= image_tag("logo.png", :alt => "Logo", width:30, height: 30, class: "d-inline-block align-text-top me-2" ) %>
-          <span>Goose</span>
-        <% end %>
+  <body style="background-color: #f6f8fa" >
+    <nav class="bg-white shadow py-2 px-4">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="mr-4">
+            <%= link_to "/admin", class: "flex items-center" do %>
+              <%= image_tag("logo.png", :alt => "Logo", width:30, height: 30, class: "mr-2" ) %>
+              <span>Goose</span>
+            <% end %>
+          </div>
+          <div class="hidden md:flex flex-row space-x-4">
+            <%= link_to "New", "/admin", class: "text-gray-500 hover:text-gray-900" %>
+            <%= link_to "Article", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
+            <%= link_to "Category", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
+            <%= link_to "Storage", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
+            <%= link_to "Setting", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
+          </div>
+        </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <%= link_to "New", "/admin", class: "nav-link"%>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Article", "/admin/article", class: "nav-link"%>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Categories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Storage</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Settings</a>
-            </li>
-          </ul>
+        <div class="flex">
+          <%= link_to "Sign out", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
         </div>
       </div>
     </nav>
