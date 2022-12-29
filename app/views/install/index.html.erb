@@ -1,1 +1,22 @@
-<h1>TODO: install</h1>
+<div class="container md:w-[32rem] mx-auto md:mt-10 p-2 md:p-0">
+  <h1 class="text-2xl text-center mt-4 mb-4">Goose install</h1>
+  <div class="p-4 bg-white border shadow-sm rounded">
+    <%= form_with url: install_post_path do |form| %>
+      <div class="flex flex-col space-y-4">
+        <div class="flex flex-col space-y-2">
+          <%= form.label :blog_name, "Blog name" %>
+          <%= form.text_field :blog_name, class:"form-control", placeholder: "A other Goose blog", required: true, "maxlength": 20, "minLength": 1 %>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <%= form.label :blog_name, "Admin username"%>
+          <%= form.text_field :admin_username, class:"form-control", placeholder: "Admin", required: true, "maxlength": 10, "minLength": 1 %>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <%= form.label :blog_name, "Admin password"%>
+          <%= form.password_field :admin_password, class:"form-control", placeholder: "Admin", required: true, "maxlength": 20, "minLength": 6 %>
+        </div>
+        <%= form.button "Install", class:"btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
