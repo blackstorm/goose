@@ -16,6 +16,8 @@ class InstallController < ApplicationController
       Option.create(key: "admin_username", value: params[:admin_username])
       Option.create(key: "admin_password", value: BCrypt::Password.create(params[:admin_password]))
       Option.create(key: "goose_installed_at", value: Time.now.to_s)
+      category = Category.create(name: "Default")
+      Article.create(title: "Hello world", content: "I am using goose blog!", category_id: category.id, status: "published")
       $is_goose_installed = true
     end
     redirect_to root_path

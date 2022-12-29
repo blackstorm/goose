@@ -22,9 +22,5 @@ module Goose
     config.time_zone = "UTC"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.after_initialize do
-      $is_goose_installed = Option.exists?(key: "goose_installed_at")
-    end
-
   end
 end
