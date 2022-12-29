@@ -1,42 +1,41 @@
 <div class="container mx-auto px-2 mt-5 md:mt-10" data-controller="editor">
   <%= form_with url: @post_url, method: "post", model: @article do |form| %>
-  <div class="flex flex-col md:flex-row gap-2">
-    <div class="w-full md:w-9/12">
-      <div class="bg-white border rounded-md p-2 md:p-4 mb-2 space-y-3">
-        <div class="flex flex-col space-y-2">
-          <%= form.label :title, "Title", class: "form-label" %>
-          <%= form.text_field :title, class:"form-control", placeholder: "Add title" %>
-        </div>
-        <div class="flex flex-col space-y-2" x-data="{ preview: false }">
-          <div class="flex items-center justify-between">
-            <%= form.label :content, "Content", class: "form-label" %>
-            <div role="group">
-              <button type="button" class="btn btn-sm" :class="preview || 'bg-blue-800'" @click="preview=false">Write</button>
-              <button type="button" class="btn btn-sm" :class="!preview || 'bg-blue-800'" @click="preview=true;update_content_preview()">Preview</button>
-            </div>
+    <div class="flex flex-col md:flex-row gap-2">
+      <div class="w-full md:w-9/12">
+        <div class="bg-white border rounded-md p-2 md:p-4 mb-2 space-y-3">
+          <div class="flex flex-col space-y-2">
+            <%= form.text_field :title, class:"form-control", placeholder: "Add title" %>
           </div>
-          <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control", placeholder: "Type content..." %>
-          <div x-show="preview" id="content-preview" class="min-w-full border p-3 rounded prose"></div>
+          <div class="flex flex-col space-y-2" x-data="{ preview: false }">
+            <div class="flex items-center justify-between">
+              <%= form.label :content, "Content", class: "form-label" %>
+              <div role="group">
+                <button type="button" class="btn btn-sm" :class="preview || 'bg-blue-700'" @click="preview=false">Write</button>
+                <button type="button" class="btn btn-sm" :class="!preview || 'bg-blue-700'" @click="preview=true;update_content_preview()">Preview</button>
+              </div>
+            </div>
+            <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control", placeholder: "Type content..." %>
+            <div x-show="preview" id="content-preview" class="min-w-full border p-3 rounded prose"></div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="w-full md:w-3/12">
-      <div class="md:px-2 flex flex-col space-y-3">
-        <div class="flex flex-col space-y-2">
-          <%= form.label :category_id, "Category", class: "form-label" %>
-          <%= form.select :category_id, @category_options, {}, {class: "form-control"}%>
-        </div>
-        <div class="flex flex-col space-y-2">
-          <%= form.label :created_at, "Date", class: "form-label" %>
-          <%= form.datetime_local_field :created_at, class: "form-control" %>
-        </div>
-        <div class="flex flex-col space-y-2">
-          <%= form.button "Publish", class:"btn btn-primary" %>
+      <div class="w-full md:w-3/12 mb-2 md:mb-0">
+        <div class="md:px-2 flex flex-col space-y-3">
+          <div class="flex flex-col space-y-2">
+            <%= form.label :category_id, "Category", class: "form-label" %>
+            <%= form.select :category_id, @category_options, {}, {class: "form-control shadow-sm"}%>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <%= form.label :created_at, "Date", class: "form-label" %>
+            <%= form.datetime_local_field :created_at, class: "form-control shadow-sm" %>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <%= form.button "Publish", class:"btn btn-primary" %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 </div>
 

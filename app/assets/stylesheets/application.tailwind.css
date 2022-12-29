@@ -5,7 +5,7 @@
 
 @layer components {
   .form-control {
-    @apply outline-none border border-gray-300 rounded py-2 px-2 block w-full;
+    @apply outline-none border border-gray-300 rounded py-2 px-2 block w-full bg-gray-50 focus:bg-white;
   }
   .btn {
     @apply py-2 px-4 rounded bg-blue-600 text-white hover:bg-blue-700;
