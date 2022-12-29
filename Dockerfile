@@ -76,6 +76,6 @@ COPY --chown=ruby:ruby . .
 
 ENTRYPOINT ["/app/bin/docker-entrypoint-web"]
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD ["rails", "s"]
