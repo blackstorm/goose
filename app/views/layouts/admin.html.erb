@@ -12,19 +12,19 @@
   </head>
 
   <body style="background-color: #f6f8fa" >
-    <nav class="bg-white shadow py-4 px-4">
+    <nav class="bg-white shadow py-4 md:py-4 px-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center">
-          <div class="mr-4">
+          <div class="mr-10">
             <%= link_to "/admin", class: "flex items-center" do %>
               <%= image_tag("logo.png", :alt => "Logo", width:30, height: 30, class: "mr-2" ) %>
               <span>Goose</span>
             <% end %>
           </div>
-          <div class="hidden md:flex flex-row space-x-4">
-            <%= link_to "New", "/admin", class: "text-gray-500 hover:text-gray-900" %>
-            <%= link_to "Article", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
-            <%= link_to "Category", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
+          <div class="hidden md:flex flex-row items-center space-x-6">
+            <%= link_to "New", admin_path, class: class_names("text-gray-500 hover:text-gray-900", { "text-gray-900": current_page?(admin_path) }) %>
+            <%= link_to "Articles", admin_articles_path, class: class_names("text-gray-500 hover:text-gray-900", { "text-gray-900": current_page?(admin_articles_path) }) %>
+            <%= link_to "Category", "/admin/category", class: class_names("text-gray-500 hover:text-gray-900", { "text-gray-900": current_page?("/admin/category") })%>
             <%= link_to "Storage", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
             <%= link_to "Setting", "/admin/article", class: "text-gray-500 hover:text-gray-900" %>
           </div>

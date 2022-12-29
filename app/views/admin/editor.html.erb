@@ -1,5 +1,5 @@
 <div class="container mx-auto px-2 mt-5 md:mt-10" data-controller="editor">
-  <%= form_with url: @post_url, method: "post", model: @article do |form| %>
+  <%= form_with url: @submit_url, model: @article do |form| %>
     <div class="flex flex-col md:flex-row gap-2">
       <div class="w-full md:w-9/12">
         <div class="bg-white border rounded-md p-2 md:p-4 mb-2 space-y-3">
@@ -31,7 +31,11 @@
             <%= form.datetime_local_field :created_at, class: "form-control shadow-sm" %>
           </div>
           <div class="flex flex-col space-y-2">
-            <%= form.button "Publish", class:"btn btn-primary" %>
+            <%= form.label :status, "Status", class: "form-label" %>
+            <%= form.select :status, %w[published draft], {}, { class: "form-control shadow-sm"}%>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <%= form.button "Save", class:"btn btn-primary" %>
           </div>
         </div>
       </div>

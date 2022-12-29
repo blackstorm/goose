@@ -1,22 +1,44 @@
-<div class="container mt-4 mt-md-5">
-  <div class="row bg-white rounded border">
-      <% @articles.each do |a| %>
-      <div class="col-12 px-4 py-4">
-        <div class="row border-bottom">
-          <div class="col-8">
-            <%= a.title %>
-          </div>
-          <div class="col-2">
-            <span><%= a.created_at.strftime('%m/%d/%Y') %></span>
-            <span class="badge text-bg-success"><%= a.status %></span>
-          </div>
-          <div class="col-2">
-            <%= link_to "Edit", "/admin", class: "btn btn-light btn-sm" %>
-            <%= link_to "Delete", "/admin", method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
-          </div>
-        </div>
-    </div>
-    <% end %>
+<div class="container md:w-[64rem] mx-auto p-2 md:p-0">
+
+  <div class="flex flex-row space-x-4 mt-4 md:mt-10">
+
+    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none">
+      <option value="Status" selected>Status</option>
+      <option value="Published">Published</option>
+      <option value="Draft">Draft</option>
+    </select>
+
+    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none">
+      <option value="Category" selected>Category</option>
+      <option value="Published">Default</option>
+      <option value="Draft">Rails</option>
+    </select>
+
   </div>
 
+  <div class="flex flex-col bg-white rounded shadow md:mt-10 mt-4">
+    <% @articles.each do |a| %>
+      <div class="flex flex-col border-b space-y-1 py-2 px-4 hover:bg-gray-100">
+        <div class="flex flex-row items-center justify-between">
+          <div class="flex flex-col">
+            <div class="w-full">
+              <span class="text-lg"><%= a.title %></span>
+            </div>
+            <div class="w-full">
+              <div class="text-sm text-gray-400 flex items-center flex-row">
+                <date class="text-gray-400"><%= a.created_at.strftime('%m/%d/%Y') %></date>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2">
+            <% if a.is_draft? %>
+              <span class="bg-gray-100 rounded-full px-2 py-1 border text-xs"><%= a.status %></span>
+            <% end %>
+            <%= link_to 'Edit', edit_admin_article_path(a), class: "text-sm text-gray-500 hover:text-blue-600"  %>
+            <%= link_to 'Delete', admin_article_path(a), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-sm text-gray-500 hover:text-red-600" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
