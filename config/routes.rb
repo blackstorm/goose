@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root :to => "index#index"
     delete "/logout", to: "logout#logout"
     resources :articles
+    resources :categories
   end
 
 end

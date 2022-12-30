@@ -1,25 +1,29 @@
-<div class="container mt-4 mt-md-5">
-  <div class="row">
-    <div class="col-12 ">
-      <div class="p-2 bg-white rounded border">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Categories</th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @categories.each do |c| %>
-            <tr>
-              <td class="col-9"><%= c.name %></td>
-              <td class="col-1"><%= c.created_at %></td>
-              <td class="col-1">Edit | Delete</td>
-            </tr>
-          <% end %>
-          </tbody>
-        </table>
+<div class="container mx-auto md:w-[48rem] p-2 mt-4 md:mt-10">
+  <div class="flex flex-col space-y-2 md:space-y-0 md:space-x-2 md:flex-row">
+    <div class="w-full md:w-7/12">
+      <div class="bg-white rounded border">
+        <% @categories.each do |c| %>
+          <div class="flex flex-row items-center justify-between px-4 py-2 border-b hover:bg-gray-100">
+            <%= link_to c.name, edit_admin_category_path(c), class: "hover:underline hover:text-blue-700", title: "Go edit #{c.name}" %>
+            <%= link_to 'Delete', admin_category_path(c), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-sm text-gray-500 hover:text-red-600" %>
+          </div>
+        <% end %>
       </div>
-
+    </div>
+    <div class="w-full md:w-5/12">
+      <%= form_with url: @submit_url, model: @category do |form| %>
+        <div class="flex flex-col p-4 bg-white rounded border space-y-4">
+          <div class="flex flex-col space-y-2">
+            <%= form.label :name, "Name", class: "form-label" %>
+            <%= form.text_field :name, class:"form-control", placeholder: "New Category", required: true, "maxlength": 20, "minLength": 1 %>
+          </div>
+          <div class="flex flex-col space-y-2">
+            <%= form.label :created_at, "Created at", class: "form-label" %>
+            <%= form.text_field :created_at, class:"form-control", placeholder: "name", disabled: true%>
+          </div>
+          <%= form.button "Save", class:"btn" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

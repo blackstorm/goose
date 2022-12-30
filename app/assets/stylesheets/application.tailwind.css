@@ -13,4 +13,9 @@
   .btn-sm {
     @apply text-xs p-2;
   }
+
+  .form-control:disabled {
+    @apply bg-gray-200 cursor-not-allowed;
+  }
 }
+

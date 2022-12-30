@@ -4,6 +4,7 @@ module Admin
   class ArticlesController < ApplicationController
 
     def index
+      @title = "Articles"
       @articles = Article.order(id: :desc).all
       render "admin/article"
     end
@@ -28,6 +29,7 @@ module Admin
       @category_options = @categories.map { |c| [c.name, c.id] }
       @article_id = params[:id]
       @article = Article.find(@article_id)
+      @title = "Edit #{@article.title}"
       @submit_url = admin_article_path(@article)
       render "admin/editor"
     end
