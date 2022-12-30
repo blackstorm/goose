@@ -1,0 +1,11 @@
+<div>
+  <h2>Category: <%= @category.name %></h2>
+  <hr>
+  <h3>Articles</h3>
+  <% @articles.each do |a| %>
+    <div>
+      <%= link_to a.title, article_path(a) %>
+    </div>
+  <% end %>
+  <%= render "blog/category" %>
+</div>
