@@ -2,7 +2,6 @@
 
 module Admin
   class ArticlesController < ApplicationController
-    layout "admin"
 
     def index
       @articles = Article.order(id: :desc).all

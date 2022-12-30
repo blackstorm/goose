@@ -1,13 +1,12 @@
 require 'bcrypt'
 
 class InstallController < ApplicationController
-
-  layout  "install"
   before_action :check_installed
   skip_before_action :require_install
 
   def index
-    render "install/index"
+    @title = "Install"
+    render "install/index", layout: "common"
   end
 
   def install

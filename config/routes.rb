@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get "/_/install", to: "install#index", as: :install
   post "/_/install", to: "install#install", as: :install_post
 
-  get "/admin", to: "admin#index"
+  resources :login, only: [:index, :create, :destroy]
 
   namespace :admin do
+    root :to => "index#index"
+    delete "/logout", to: "logout#logout"
     resources :articles
   end
 

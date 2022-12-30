@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %> - Goose</title>
+  <link rel="icon" href="/favicon.png" sizes="96x96" type="image/png">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+
+<body style="background-color: #f6f8fa">
+<%= yield %>
+</body>
+</html>

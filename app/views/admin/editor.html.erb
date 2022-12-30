@@ -1,8 +1,8 @@
-<div class="container mx-auto px-2 mt-5 md:mt-10" data-controller="editor">
+<div class="container md:w-[64rem] mx-auto px-2 md:px-0 mt-5 md:mt-10" data-controller="editor">
   <%= form_with url: @submit_url, model: @article do |form| %>
     <div class="flex flex-col md:flex-row gap-2">
       <div class="w-full md:w-9/12">
-        <div class="bg-white border rounded-md p-2 md:p-4 mb-2 space-y-3">
+        <div class="bg-white border rounded-md p-2 md:p-4 mb-2 space-y-4">
           <div class="flex flex-col space-y-2">
             <%= form.text_field :title, class:"form-control", placeholder: "Add title" %>
           </div>
