@@ -9,7 +9,8 @@ Rails.application.routes.draw do
     delete "/logout", to: "logout#logout"
     resources :articles
     resources :categories
-    resources :settings, only: [:index, :update]
+    get "/settings", to: "settings#index", as: :settings
+    post "/settings", to: "settings#update", as: :update_settings
   end
 
   get "/_/install", to: "install#index", as: :install
