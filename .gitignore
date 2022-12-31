@@ -67,9 +67,5 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
-<<<<<<< HEAD
-=======
 
-# Ignore idea
 .idea/
->>>>>>> 51120f0 (ignore idea)
