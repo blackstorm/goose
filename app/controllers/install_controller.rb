@@ -28,8 +28,4 @@ class InstallController < ApplicationController
     redirect_to root_path if $is_goose_installed
   end
 
-  def install_params
-    params.require(:install).permit(:blog_name, :admin_username, :admin_password)
-  end
-
 end
