@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @title %> - Admin</title>
+    <link rel="icon" href="/favicon.png" sizes="96x96" type="image/png">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body style="background-color: #f6f8fa" >
+    <nav class="p-2 border-b shadow-sm bg-white">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="mr-4">
+            <%= link_to "/admin", class: "flex items-center" do %>
+              <%= image_tag("logo.png", :alt => "Logo", width:35, height: 35, class: "mr-2" ) %>
+              <span><%= @blog_name %></span>
+            <% end %>
+          </div>
+          <div class="hidden md:flex flex-row items-center text-sm text-gray-400 font-medium transition-all duration-200">
+            <%= link_to "Editor", admin_root_path, class: class_names("rounded py-2 px-4 hover:text-gray-800", { "text-gray-800": current_page?(admin_root_path) }) %>
+            <%= link_to "Articles", admin_articles_path, class: class_names("rounded py-2 px-4 hover:text-gray-800", { "text-gray-800": current_page?(admin_articles_path) }) %>
+            <%= link_to "Categories", admin_categories_path, class: class_names("rounded py-2 px-4 hover:text-gray-800", { "text-gray-800": current_page?(admin_categories_path) })%>
+            <%#= link_to "Storage", "/admin/article", class: "rounded py-2 px-4" %>
+            <%= link_to "Settings", admin_settings_path, class: class_names("rounded py-2 px-4 hover:text-gray-800", { "text-gray-800": current_page?(admin_settings_path) })%>
+            <%= link_to "View site", root_path, class: "rounded py-2 px-4 hover:text-gray-800" %>
+          </div>
+        </div>
+
+        <div class="flex">
+          <%= button_to "Log Out", admin_logout_path, method: :delete, class: "text-slate-400 hover:text-slate-500" %>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

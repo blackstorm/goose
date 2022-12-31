@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <link rel="icon" href="/favicon.png" sizes="96x96" type="image/png">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    footer {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    code {
+        padding: .5rem;
+        background-color: #CCCCCC;
+        border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body>
+<h1>
+  <%= link_to @blog_name, root_path %>
+</h1>
+<%= yield %>
+<footer>
+  <i>Powered by <a href="https://github.com/blackstorm/goose" target="_blank">Goose Blog</a></i>
+</footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<div class="container md:w-[32rem] mx-auto mt-4 md:mt-10">
+  <div class="flex flex-col bg-white p-4 rounded border space-y-2 md:space-y-4">
+    <%= form_with url: admin_setting_path, model: @category do |form| %>
+      <div class="flex flex-col p-4 bg-white rounded border space-y-4">
+        <div class="flex flex-col space-y-2">
+          <%= form.label :name, "Name", class: "form-label" %>
+          <%= form.text_field :name, class:"form-control", placeholder: "New Category", required: true, "maxlength": 20, "minLength": 1 %>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <%= form.label :created_at, "Created at", class: "form-label" %>
+          <%= form.text_field :created_at, class:"form-control", placeholder: "name", disabled: true%>
+        </div>
+        <%= form.button "Save", class:"btn" %>
+      </div>
+    <% end %>
+  </div>
+</div>
