@@ -1,12 +1,17 @@
 # frozen_string_literal: true
+require 'bcrypt'
 
 module Admin
   class SettingsController < Admin::ApplicationController
 
+    SETTING_KEYS = %w(blog_name admin_username admin_password)
+
     def index
       @title = "Settings"
 
-      load_settings
+      @settings = Option.where(key: SETTING_KEYS)
+                        .map { |option| [option.key.to_sym, option.value] }
+                        .to_h
       render "admin/setting"
     end
 
@@ -24,29 +29,23 @@ module Admin
         end
       end
 
-      flash[:alert] = 'Successfully update!'
+      flash[:notice] = "Settings updated successfully."
       redirect_to admin_settings_path
     end
 
     private
 
     def update_password(value)
-      password = Option.where(key: "admin_password").first
+      return if value.blank?
+      password = Option.where(key: "admin_password").first!
       if password.value != value
         password.update!(value: BCrypt::Password.create(value))
       end
-    end
-
-    def load_settings
-      @settings = {
-        :blog_name => Option.where(key: "blog_name").first.value,
-        :admin_username => Option.where(key: "admin_username").first.value,
-        :admin_password => Option.where(key: "admin_password").first.value
-      }
+      session[:admin] = nil
     end
 
     def setting_params
-      params.permit(:blog_name, :admin_username, :admin_password)
+      params.permit(SETTING_KEYS)
     end
 
   end
