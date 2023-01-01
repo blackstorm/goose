@@ -11,6 +11,9 @@ enabled = true
 [[analyzers]]
 name = "ruby"
 enabled = true
+test_patterns = [
+  "test/**"
+]
 
 [[analyzers]]
 name = "docker"
