@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "/articles/:id", to: "blog/articles#show", as: :article
   get "/categories/:id", to: "blog/categories#show", as: :category
 
+  get "/public/uploads/:filename", to: "public#uploads"
+
   resources :login, only: [:index, :create, :destroy]
   namespace :admin do
     root :to => "index#index"

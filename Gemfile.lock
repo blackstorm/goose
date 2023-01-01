@@ -91,6 +91,7 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    fileutils (1.7.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -220,6 +221,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
+  fileutils (~> 1.7)
   jbuilder
   jsbundling-rails
   kramdown (~> 2.4)

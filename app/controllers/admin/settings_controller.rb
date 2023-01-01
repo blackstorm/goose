@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 require 'bcrypt'
+require 'fileutils'
 
 module Admin
   class SettingsController < Admin::ApplicationController
 
-    SETTING_KEYS = %w(blog_name admin_username admin_password)
+    SETTING_KEYS = %w(blog_name admin_username admin_password site_favicon)
 
     def index
       @title = "Settings"
@@ -16,11 +17,17 @@ module Admin
     end
 
     def update
-      setting_params.each do |key, value|
-        if key == "admin_password"
-          update_password(value)
-          next
-        end
+      args = setting_params.clone
+
+      update_password(args[:admin_password])
+      args.delete(:admin_password)
+
+      if args[:site_favicon].present?
+        update_favicon(args[:site_favicon])
+        args.delete(:site_favicon)
+      end
+
+      args.each do |key, value|
         option = Option.where(key: key).first
         if option.nil?
           Option.create!(key: key, value: value)
@@ -35,13 +42,21 @@ module Admin
 
     private
 
+    def update_favicon(uploaded_io)
+      site_public_path = "#{ENV["GOOSE_DATA_PATH"] || Rails.root.join("data")}/uploads"
+      FileUtils.mkdir_p site_public_path
+      File.open("#{site_public_path}/#{uploaded_io.original_filename}", "wb") do |file|
+        file.write(uploaded_io.read)
+      end
+    end
+
     def update_password(value)
       return if value.blank?
       password = Option.where(key: "admin_password").first!
       if password.value != value
         password.update!(value: BCrypt::Password.create(value))
+        session[:admin] = nil
       end
-      session[:admin] = nil
     end
 
     def setting_params
