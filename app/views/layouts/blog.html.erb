@@ -5,6 +5,9 @@
   <%= blog_favicon %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
+    body {
+        background-color: <%= @blog_mates[:blog_background_color] %>;
+    }
     footer {
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -20,7 +23,7 @@
 
 <body>
 <h1>
-  <%= link_to @blog_name, root_path %>
+  <%= link_to @blog_mates[:blog_name], root_path %>
 </h1>
 <%= yield %>
 <footer>

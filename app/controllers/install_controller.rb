@@ -12,6 +12,7 @@ class InstallController < ApplicationController
   def install
     Option.transaction do
       Option.create!(key: "blog_name", value: params[:blog_name])
+      Option.create!(key: "blog_background_color", value: "#ffffff")
       Option.create!(key: "admin_username", value: params[:admin_username])
       Option.create!(key: "admin_password", value: BCrypt::Password.create(params[:admin_password]))
       Option.create!(key: "goose_installed_at", value: Time.now.to_s)
