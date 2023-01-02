@@ -9,15 +9,22 @@
     <%= form_with url: admin_update_settings_path do |form| %>
       <div class="flex flex-col space-y-4">
         <div class="flex flex-col space-y-2">
-          <%= form.label :blog_name, "Blog name", class: "form-label" %>
+          <div class="flex flex-row space-x-2 items-center">
+            <%= form.label :site_favicon, "Favicon" %>
+            <img src="/public/uploads/favicon.ico" alt="favicon" class="w-4 h-4">
+          </div>
+          <%= form.file_field :site_favicon, class:"form-control", accept: ".ico"%>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <%= form.label :blog_name, "Blog name" %>
           <%= form.text_field :blog_name, class:"form-control", value:@settings[:blog_name], placeholder:@settings[:blog_name], required: true %>
         </div>
         <div class="flex flex-col space-y-2">
-          <%= form.label :admin_username, "Admin username", class: "form-label" %>
+          <%= form.label :admin_username, "Admin username" %>
           <%= form.text_field :admin_username, class:"form-control", value:@settings[:admin_username], placeholder: "admin", required: true%>
         </div>
         <div class="flex flex-col space-y-2">
-          <%= form.label :admin_password, "Admin password", class: "form-label" %>
+          <%= form.label :admin_password, "Admin password" %>
           <%= form.password_field :admin_password, class:"form-control", value:@settings[:admin_password], placeholder: "password", required: true%>
         </div>
         <%= form.button "Update", class:"btn" %>

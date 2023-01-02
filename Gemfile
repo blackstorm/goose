@@ -76,3 +76,4 @@ end
 
 gem "tailwindcss-rails", "~> 2.0"
 gem 'kramdown', '~> 2.4'
+gem 'fileutils', '~> 1.7'

@@ -68,7 +68,8 @@ RUN chmod 0755 bin/*
 ARG RAILS_ENV="production"
 ENV RAILS_ENV="${RAILS_ENV}" \
     PATH="${PATH}:/home/ruby/.local/bin" \
-    USER="ruby"
+    USER="ruby" \
+    GOOSE_DATA_PATH="/app/data"
 
 COPY --chown=ruby:ruby --from=assets /usr/local/bundle /usr/local/bundle
 COPY --chown=ruby:ruby --from=assets /app/public /public

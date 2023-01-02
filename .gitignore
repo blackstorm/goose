@@ -72,3 +72,5 @@ yarn-debug.log*
 app/assets/builds/*.js
 app/assets/builds/*.map
 app/assets/builds/*.css
+
+data/uploads/
