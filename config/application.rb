@@ -22,5 +22,6 @@ module Goose
     config.time_zone = "UTC"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    ENV['GOOSE_DATA_PATH'] = Rails.root.join("data").to_s if ENV['GOOSE_DATA_PATH'].blank?
   end
 end
