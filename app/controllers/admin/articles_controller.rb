@@ -5,7 +5,7 @@ module Admin
 
     def index
       @title = "Articles"
-      @articles = Article.order(id: :desc).all
+      @articles = Article.order(id: :desc).includes(:category).all
       render "admin/article"
     end
 

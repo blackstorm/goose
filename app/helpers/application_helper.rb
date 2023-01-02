@@ -7,4 +7,8 @@ module ApplicationHelper
     favicon_link_tag "/public/uploads/favicon.ico" if favicon.exist?
   end
 
+  def admin_nav_link(name, path)
+    link_to name, path, class: class_names("admin-nav-link", { "text-gray-800": current_page?(path) })
+  end
+
 end
