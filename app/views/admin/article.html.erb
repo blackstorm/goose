@@ -18,15 +18,16 @@
 
   <div class="flex flex-col bg-white border rounded md:mt-10 mt-4">
     <% @articles.each do |a| %>
-      <div class="flex flex-col border-b space-y-1 py-2 px-4 hover:bg-gray-100">
+      <div class="flex flex-col border-b py-2 px-4 hover:bg-gray-100">
         <div class="flex flex-row items-center justify-between">
-          <div class="flex flex-col">
+          <div class="flex flex-col space-y-1">
             <div class="w-full">
               <%= link_to a.title, edit_admin_article_path(a), class: "hover:underline hover:text-blue-700", title: "Go edit #{a.title}" %>
             </div>
             <div class="w-full">
-              <div class="text-sm text-gray-400 flex items-center flex-row">
-                <date class="text-gray-400"><%= a.created_at.strftime('%m/%d/%Y') %></date>
+              <div class="text-sm text-gray-400 flex items-center flex-row space-x-2">
+                <span>#<%= a.category.name %></span>
+                <date class="text-gray-400"><%= a.created_at.strftime('%d %b, %Y') %></date>
               </div>
             </div>
           </div>
@@ -34,7 +35,7 @@
             <% if a.is_draft? %>
               <span class="bg-gray-100 rounded-full px-2 py-1 border text-xs"><%= a.status %></span>
             <% end %>
-            <%= link_to 'Delete', admin_article_path(a), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "text-sm text-gray-500 hover:text-red-600" %>
+            <%= link_to 'Delete', admin_article_path(a), data: {turbo_method: :delete, turbo_confirm: "Are you sure delete #{a.title}?"}, class: "text-sm text-gray-500 hover:text-red-600" %>
           </div>
         </div>
       </div>

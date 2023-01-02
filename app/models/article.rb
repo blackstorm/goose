@@ -2,6 +2,8 @@ require 'kramdown'
 
 class Article < ApplicationRecord
 
+  belongs_to :category
+
   def is_published?
     self.status == "published"
   end
