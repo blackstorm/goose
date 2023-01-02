@@ -1,7 +1,8 @@
 <div>
-  <h2>Category: <%= @category.name %></h2>
-  <hr>
-  <h3>Articles</h3>
+  <h3>Articles of <%= @category.name %></h3>
+  <% if @articles.empty? %>
+  <i>There are no articles in this category.</i>
+  <% end %>
   <% @articles.each do |a| %>
     <div>
       <%= link_to a.title, article_path(a) %>

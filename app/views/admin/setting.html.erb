@@ -15,6 +15,16 @@
           </div>
           <%= form.file_field :site_favicon, class:"form-control", accept: ".ico"%>
         </div>
+
+        <div class="flex flex-col space-y-2">
+          <div class="flex flex-row space-x-2 items-center">
+            <%= form.label :blog_background_color, "Blog background color" %>
+            <div class="h-5 w-5 border rounded-full" style="background-color: <%= @settings[:blog_background_color] %>">
+            </div>
+          </div>
+          <%= form.text_field :blog_background_color, class:"form-control", value:@settings[:blog_background_color], placeholder: "#ffffff" %>
+        </div>
+
         <div class="flex flex-col space-y-2">
           <%= form.label :blog_name, "Blog name" %>
           <%= form.text_field :blog_name, class:"form-control", value:@settings[:blog_name], placeholder:@settings[:blog_name], required: true %>
