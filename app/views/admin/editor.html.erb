@@ -4,7 +4,7 @@
       <div class="w-full md:w-9/12">
         <div class="bg-white border rounded-md p-2 mb-2 space-y-4">
           <div class="flex flex-col space-y-2">
-            <%= form.text_field :title, class:"form-control", placeholder: "Add title", required: true, "maxlength": 100, "minLength": 1 %>
+            <%= form.text_field :title, class:"form-control shadow-inner", placeholder: "Add title", required: true, "maxlength": 100, "minLength": 1 %>
           </div>
           <div class="flex flex-col space-y-2" x-data="{ preview: false }">
             <div class="flex items-center justify-between">
@@ -14,7 +14,8 @@
                 <button type="button" class="btn btn-sm" :class="!preview || 'bg-blue-700'" @click="preview=true;update_content_preview()">Preview</button>
               </div>
             </div>
-            <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control", placeholder: "Type content..." %>
+            <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control shadow-inner", placeholder: "Type content..." %>
+            <div class="text-xs text-gray-500" x-show="!preview">Attach images by dragging</div>
             <div x-show="preview" id="content-preview" class="min-w-full border p-3 rounded prose"></div>
           </div>
         </div>
