@@ -9,6 +9,10 @@ module Blog
 
     private
 
+    def set_page_title(title)
+      @page_title = "#{title} - #{@blog_mates[:blog_name]}"
+    end
+
     def set_meta_values
       @blog_mates = Option.where(key:META_KEYS).map { |option| [option.key.to_sym, option.value] }.to_h
     end

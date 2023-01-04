@@ -7,7 +7,7 @@ module Blog
       @category = Category.find(params[:id])
       @categories = Category.all
       @articles = Article.where(category_id: @category.id).order(id: :desc).all
-      @title = "#{@category.name} - #{@blog_name}"
+      set_page_title @category.name
       render "blog/category"
     end
 

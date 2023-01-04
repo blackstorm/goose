@@ -8,7 +8,7 @@
           </div>
           <div class="flex flex-col space-y-2" x-data="{ preview: false }">
             <div class="flex items-center justify-between">
-              <%= form.label :content, "Content", class: "form-label" %>
+              <%= form.label :content, "Content" %>
               <div role="group">
                 <button type="button" class="btn btn-sm" :class="preview || 'bg-blue-700'" @click="preview=false">Write</button>
                 <button type="button" class="btn btn-sm" :class="!preview || 'bg-blue-700'" @click="preview=true;update_content_preview()">Preview</button>
@@ -24,15 +24,15 @@
       <div class="w-full md:w-3/12 mb-2 md:mb-0">
         <div class="md:px-2 flex flex-col space-y-3">
           <div class="flex flex-col space-y-2">
-            <%= form.label :category_id, "Category", class: "form-label" %>
+            <%= form.label :category_id, "Category" %>
             <%= form.select :category_id, @category_options, {}, {class: "form-control shadow-sm"} %>
           </div>
           <div class="flex flex-col space-y-2">
-            <%= form.label :created_at, "Date", class: "form-label" %>
-            <%= form.datetime_local_field :created_at, class: "form-control shadow-sm" %>
+            <%= form.label :created_at, "Date" %>
+            <%= form.datetime_local_field :created_at, value: @article.created_at_datetime_local_field, class: "form-control shadow-sm", required: true %>
           </div>
           <div class="flex flex-col space-y-2">
-            <%= form.label :status, "Status", class: "form-label" %>
+            <%= form.label :status, "Status" %>
             <%= form.select :status, %w[published draft], {}, { class: "form-control shadow-sm"}%>
           </div>
           <div class="flex flex-col space-y-2">
