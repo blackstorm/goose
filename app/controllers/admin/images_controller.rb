@@ -5,9 +5,7 @@ module Admin
 
     def create
       image = params[:image]
-      if image.blank?
-        return render json: {ok: false, message: "Can't get upload image."}, status: 400
-      end
+      return render json: {ok: false, message: "Failed to get image param"}, status: 400 if image.blank?
 
       uploader = ImageUploader.new
       uploader.store! image

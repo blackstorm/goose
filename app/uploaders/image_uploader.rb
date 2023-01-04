@@ -1,7 +1,7 @@
 class ImageUploader < BaseUploader
 
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png webp)
   end
 
   def url
@@ -10,7 +10,7 @@ class ImageUploader < BaseUploader
 
   def filename
     @name ||= SecureRandom.uuid
-    @path = "#{Time.now.year}/#{Time.now.month}/#{@name}.#{file.extension.downcase}"
+    @path = "images/#{Time.now.year}/#{@name}.#{file.extension.downcase}"
     @path
   end
 
