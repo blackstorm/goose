@@ -5,11 +5,11 @@ module Admin
   class ApplicationController < ::ApplicationController
     layout "admin"
 
-    before_action :require_login, :layout_values
+    before_action :require_login, :set_require_template_values
 
     private
 
-    def layout_values
+    def set_require_template_values
       @blog_name = Option.where(key: "blog_name").first.value
       @title = @blog_name
     end

@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     redirect_to install_path unless $is_goose_installed
   end
 
+  def require_admin_session
+      redirect_to login_index_path unless session[:admin]
+  end
+
 end

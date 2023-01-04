@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/articles/:id", to: "blog/articles#show", as: :article
   get "/categories/:id", to: "blog/categories#show", as: :category
 
-  get "/public/uploads/:filename", to: "public#uploads"
+  get "/public/uploads/*path", to: "public#uploads"
 
   resources :login, only: [:index, :create, :destroy]
   namespace :admin do
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     delete "/logout", to: "logout#logout"
     resources :articles
     resources :categories
+    resources :images, only: [:create]
     get "/settings", to: "settings#index", as: :settings
     post "/settings", to: "settings#update", as: :update_settings
   end

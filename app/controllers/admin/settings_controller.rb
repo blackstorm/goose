@@ -43,11 +43,7 @@ module Admin
     private
 
     def update_favicon(uploaded_io)
-      uploads_path = "#{ENV["GOOSE_DATA_PATH"]}/uploads"
-      FileUtils.mkdir_p uploads_path
-      File.open("#{uploads_path}/#{uploaded_io.original_filename}", "wb") do |file|
-        file.write(uploaded_io.read)
-      end
+      FaviconUploader.new.store! uploaded_io
     end
 
     def update_password(value)
