@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .form-control {
     @apply outline-none border border-gray-300 rounded px-3 py-2 block w-full bg-gray-50 focus:bg-white text-sm focus:border-blue-500;
@@ -26,4 +25,3 @@
     @apply text-blue-600 font-medium
   }
 }
-
