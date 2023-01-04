@@ -1,56 +1,30 @@
 import { Controller } from "@hotwired/stimulus"
 import * as marked from "marked"
 import autosize from 'autosize'
+import {addClasses, removeClasses, isImage} from '../utils'
+import { uploadImage } from '../uploder'
 
 window.marked = marked
-
-function addClasses(target, classes) {
-    classes.forEach((c) => target.classList.add(c))
-}
-
-function removeClasses(target, classes) {
-    classes.forEach((c) => target.classList.remove(c))
-}
-
-function eventHandler(dom, eventName, fn) {
-    dom.addEventListener(eventName, (event) => {
-        event.preventDefault()
-        event.stopPropagation()
-        fn(event)
-    }, false)
-}
-
-function isImageType(file) {
-    return file && file.type.startsWith("image/")
-}
-
-const uploadImage = async (image) => {
-    // Get rails csrf token
-    const csrfToken = document.querySelector("meta[name=csrf-token]").content
-    const formData = new FormData()
-    formData.append("image", image)
-    // Upload image
-    const response = await fetch("/admin/images", {
-        method: "POST",
-        body: formData,
-        headers: {
-            "Accept": "application/json",
-            "X-CSRF-Token": csrfToken
-        }
-    })
-    return await response.json()
-}
 
 export default class extends Controller {
     connect() {
         const editor = document.getElementById('article_content')
-
         autosize(editor);
 
-        eventHandler(editor, "dragenter", this.handleEditorDragenter)
-        eventHandler(editor, "dragleave", this.handleEditorDragleave)
-        eventHandler(editor, "dragover", this.handleEditorDragover)
-        eventHandler(editor, "drop", this.handleEditorDrop)
+        const eventHandlerDelegate = (dom, eventName, fn) => {
+            dom.addEventListener(eventName, event => {
+                event.preventDefault()
+                event.stopPropagation()
+                fn(event)
+            }, false)
+        }
+
+        [
+            { eventName: "dragenter", fn: this.handleEditorDragenter },
+            { eventName: "dragleave", fn: this.handleEditorDragleave },
+            { eventName: "dragover", fn: this.handleEditorDragover },
+            { eventName: "drop", fn: this.handleEditorDrop },
+        ].forEach(({ eventName, fn }) => eventHandlerDelegate(editor, eventName, fn.bind(this)))
     }
 
     handleEditorDragenter(event) {
@@ -65,22 +39,33 @@ export default class extends Controller {
     handleEditorDragover(event) {}
 
     async handleEditorDrop(event) {
+        const editor = event.target
         const files = Array.from(event.dataTransfer.files)
         for (const file of files) {
-            if (!isImageType(file))  {
+            if (!isImage(file))  {
                 alert("Only image files are supported for now.")
                 return
             }
         }
         for (const file of files) {
-            const { url } = await uploadImage(file)
+            const { ok, message, url } = await uploadImage(file)
+            if (!ok) {
+                alert(`Image upload failed: ${message}`)
+                return
+            }
             const imageMarkdown = `![${file.name}](${url})`
-            const editor = event.target
-            const value = editor.value
-            editor.value += value.endsWith("\n") ? imageMarkdown : `\n${imageMarkdown}`
-            autosize.update(editor)
+            this.append2Editor(editor, imageMarkdown)
         }
-        removeClasses(event.target, ["border-dashed", "border-2", "border-blue-700"])
+        removeClasses(editor, ["border-dashed", "border-2", "border-blue-700"])
+    }
+
+    append2Editor(editor, value) {
+        if (editor.value === "") {
+            editor.value += value;
+        } else {
+            editor.value += value.startsWith("\n") ? value: `\n${value}`
+        }
+        autosize.update(editor)
     }
 
 }
