@@ -4,15 +4,14 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.1",
     "@hotwired/turbo-rails": "^7.2.4",
-    "@popperjs/core": "^2.11.6",
+    "autoprefixer": "^10.4.13",
     "alpinejs": "^3.10.5",
     "autosize": "^5.0.2",
     "esbuild": "^0.16.10",
-    "marked": "^4.2.5",
-    "sass": "^1.57.1"
+    "marked": "^4.2.5"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
-    "build:css": "sass ./app/assets/stylesheets/application.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   }
 }
