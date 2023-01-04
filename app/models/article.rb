@@ -16,4 +16,8 @@ class Article < ApplicationRecord
     Kramdown::Document.new(self.content).to_html
   end
 
+  def created_at_datetime_local_field
+    self.created_at.strftime("%Y-%m-%dT%H:%M")
+  end
+
 end

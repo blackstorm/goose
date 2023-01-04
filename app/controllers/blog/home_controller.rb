@@ -3,8 +3,8 @@
 module Blog
   class HomeController < Blog::ApplicationController
     def index
-      @title = @blog_name
-      @articles = Article.order(id: :desc).all
+      @page_title = @blog_mates[:blog_name]
+      @articles = Article.where(status: "published").order(id: :desc).all
       @categories = Category.all
       render "blog/index"
     end

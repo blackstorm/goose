@@ -13,10 +13,10 @@
   </head>
 
   <body style="background-color: #f6f8fa" >
-    <nav class="p-2 border-b shadow-sm bg-white">
-      <div class="container mx-auto flex justify-between items-center">
-        <div class="flex items-center">
-          <div class="mr-4">
+    <nav class="py-2 md:py-0 px-2 border-gray-200 border-b bg-white">
+      <div class="container mx-auto flex flex-row justify-between items-center">
+        <div class="flex flex-row items-center">
+          <div class="mr-4 flex flex-row items-center">
             <%= link_to admin_root_path, class: "flex items-center" do %>
               <%= image_tag("logo.png", :alt => "Logo", width:35, height: 35, class: "mr-2" ) %>
               <span class="font-medium"><%= @blog_name %></span>
@@ -30,7 +30,6 @@
             <%= admin_nav_link "View site", root_path %>
           </div>
         </div>
-
         <div class="flex">
           <%= button_to "Logout", admin_logout_path, method: :delete, class: "text-sm text-slate-400 hover:text-slate-500" %>
         </div>
