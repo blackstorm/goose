@@ -69,13 +69,17 @@ export default class extends Controller {
     }
 
     showImagesUploadProgress() {
-        const uploadStatusBox = document.getElementById("images-upload-progress");
-        removeClasses(uploadStatusBox, ["hidden"])
+        removeClasses(
+            document.getElementById("images-upload-progress"),
+            ["hidden"]
+        )
     }
 
     hiddenImagesUploadProgress() {
-        const uploadStatusBox = document.getElementById("images-upload-progress");
-        addClasses(uploadStatusBox, ["hidden"])
+        addClasses(
+            document.getElementById("images-upload-progress"),
+            ["hidden"]
+        )
     }
 
     updateImagesUploadProgressMessage(message) {
