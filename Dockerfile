@@ -39,8 +39,6 @@ COPY --chown=ruby:ruby . .
 
 RUN if [ "${RAILS_ENV}" != "development" ]; then SECRET_KEY_BASE=dummyvalue rails assets:precompile; fi
 
-RUN tree -L 3 -I node_modules
-
 CMD ["bash"]
 
 ###############################################################################
