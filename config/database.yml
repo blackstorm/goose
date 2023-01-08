@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV.fetch("GOOSE_DATA_PATH") { "/goose-data" } %>/db/production.sqlite3
+  database: <%= ENV.fetch("GOOSE_DATA_PATH") { "/usr/src/goose/data" } %>/db/production.sqlite3
