@@ -1,4 +1,4 @@
-FROM ruby:3.1.3-bullseye AS assets
+FROM ruby:3.1.3-slim-bullseye AS assets
 LABEL maintainer="blackstorm <inf2inf2@outlook.com>"
 
 WORKDIR /app
@@ -6,9 +6,11 @@ WORKDIR /app
 ARG UID=1000
 ARG GID=1000
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NOWARNINGS="yes"
 
 RUN bash -c "set -o pipefail && apt-get update \
-  && apt-get install -yq --no-install-recommends build-essential curl git libpq-dev \
+  && apt-get install -yq --no-install-recommends build-essential curl git \
   && curl -sSL https://deb.nodesource.com/setup_18.x | bash - \
   && apt-get update && apt-get install -yq --no-install-recommends nodejs tree \
   && npm install --global yarn \
@@ -43,7 +45,7 @@ CMD ["bash"]
 
 ###############################################################################
 
-FROM ruby:3.1.3-bullseye AS app
+FROM ruby:3.1.3-slim-bullseye AS app
 LABEL maintainer="blackstorm <inf2inf2@outlook.com>"
 
 WORKDIR /usr/src/goose
@@ -51,8 +53,11 @@ WORKDIR /usr/src/goose
 ARG UID=1000
 ARG GID=1000
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBCONF_NOWARNINGS="yes"
+
 RUN apt-get update \
-  && apt-get install -yq --no-install-recommends build-essential curl libpq-dev sqlite3 \
+  && apt-get install -yq --no-install-recommends build-essential curl \
   && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
   && apt-get clean \
   && groupadd -g "${GID}" ruby \
@@ -62,7 +67,7 @@ RUN apt-get update \
 USER ruby
 
 ARG RAILS_ENV="production"
-ARG GOOSE_DATA_PATH="/user/src/goose/data"
+ARG GOOSE_DATA_PATH="/usr/src/goose/data"
 ENV GOOSE_DATA_PATH="${GOOSE_DATA_PATH}" \
     RUBY_YJIT_ENABLE="true" \
     RAILS_ENV="${RAILS_ENV}" \
