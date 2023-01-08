@@ -47,16 +47,43 @@ export default class extends Controller {
                 return
             }
         }
-        for (const file of files) {
+
+        // Show upload status box.
+        this.showImagesUploadProgress();
+
+        for (let i = 0; i < files.length; i++) {
+            this.updateImagesUploadProgressMessage(`${i + 1} / ${files.length} uploading`);
+            const file = files[i]
             const { ok, message, url } = await uploadImage(file)
             if (!ok) {
-                alert(`Image upload failed: ${message}`)
+                alert(`Failed to upload image: ${message}, please try again.`)
+                this.hiddenImagesUploadProgress();
                 return
             }
             const imageMarkdown = `![${file.name}](${url})`
             this.append2Editor(editor, imageMarkdown)
         }
+
+        this.hiddenImagesUploadProgress();
         removeClasses(editor, ["border-dashed", "border-2", "border-blue-700"])
+    }
+
+    showImagesUploadProgress() {
+        removeClasses(
+            document.getElementById("images-upload-progress"),
+            ["hidden"]
+        )
+    }
+
+    hiddenImagesUploadProgress() {
+        addClasses(
+            document.getElementById("images-upload-progress"),
+            ["hidden"]
+        )
+    }
+
+    updateImagesUploadProgressMessage(message) {
+        document.getElementById("images-upload-progress-message").innerHTML = message
     }
 
     append2Editor(editor, value) {
