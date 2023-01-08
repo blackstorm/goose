@@ -62,12 +62,8 @@ RUN apt-get update \
   && useradd --create-home --no-log-init -u "${UID}" -g "${GID}" ruby \
   && chown ruby:ruby -R /usr/src/goose
 
-USER ruby
-
 ARG RAILS_ENV="production"
-ARG GOOSE_DATA_PATH="/usr/src/goose/data"
-ENV GOOSE_DATA_PATH="${GOOSE_DATA_PATH}" \
-    RUBY_YJIT_ENABLE="true" \
+ENV RUBY_YJIT_ENABLE="true" \
     RAILS_ENV="${RAILS_ENV}" \
     PATH="${PATH}:/home/ruby/.local/bin" \
     USER="ruby"
@@ -77,5 +73,7 @@ COPY --chown=ruby:ruby --from=assets /app/public ./public
 COPY --chown=ruby:ruby . .
 
 ENTRYPOINT ["/usr/src/goose/bin/docker-entrypoint.sh"]
+
+CMD ["/usr/src/goose/bin/start.sh"]
 
 EXPOSE 3000
