@@ -49,37 +49,37 @@ export default class extends Controller {
         }
 
         // Show upload status box.
-        this.showImageUploadStatus();
+        this.showImagesUploadProgress();
 
         for (let i = 0; i < files.length; i++) {
-            this.updateImageUploadStatusProgressMessage(`${i + 1} / ${files.length} uploading`);
+            this.updateImagesUploadProgressMessage(`${i + 1} / ${files.length} uploading`);
             const file = files[i]
             const { ok, message, url } = await uploadImage(file)
             if (!ok) {
                 alert(`Failed to upload image: ${message}, please try again.`)
-                this.hiddenImageUploadStatus();
+                this.hiddenImagesUploadProgress();
                 return
             }
             const imageMarkdown = `![${file.name}](${url})`
             this.append2Editor(editor, imageMarkdown)
         }
 
-        this.hiddenImageUploadStatus();
+        this.hiddenImagesUploadProgress();
         removeClasses(editor, ["border-dashed", "border-2", "border-blue-700"])
     }
 
-    showImageUploadStatus() {
-        const uploadStatusBox = document.getElementById("image-upload-status");
+    showImagesUploadProgress() {
+        const uploadStatusBox = document.getElementById("images-upload-progress");
         removeClasses(uploadStatusBox, ["hidden"])
     }
 
-    hiddenImageUploadStatus() {
-        const uploadStatusBox = document.getElementById("image-upload-status");
+    hiddenImagesUploadProgress() {
+        const uploadStatusBox = document.getElementById("images-upload-progress");
         addClasses(uploadStatusBox, ["hidden"])
     }
 
-    updateImageUploadStatusProgressMessage(message) {
-        document.getElementById("image-upload-status-progress-message").innerHTML = message
+    updateImagesUploadProgressMessage(message) {
+        document.getElementById("images-upload-progress-message").innerHTML = message
     }
 
     append2Editor(editor, value) {
