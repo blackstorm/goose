@@ -12,7 +12,7 @@ ENV DEBCONF_NOWARNINGS="yes"
 RUN bash -c "set -o pipefail && apt-get update \
   && apt-get install -yq --no-install-recommends build-essential curl git \
   && curl -sSL https://deb.nodesource.com/setup_18.x | bash - \
-  && apt-get update && apt-get install -yq --no-install-recommends nodejs tree \
+  && apt-get update && apt-get install -yq --no-install-recommends nodejs \
   && npm install --global yarn \
   && groupadd -g \"${GID}\" ruby \
   && useradd --create-home --no-log-init -u \"${UID}\" -g \"${GID}\" ruby \
