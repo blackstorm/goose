@@ -7,6 +7,7 @@ class LoginController < ApplicationController
   def index
     return redirect_to admin_root_path if session[:admin]
     @title = "Login"
+    @blog_name = Option.where(key: "blog_name").first.value
     render "login/index"
   end
 
