@@ -63,8 +63,10 @@ RUN apt-get update \
   && chown ruby:ruby -R /usr/src/goose
 
 ARG RAILS_ENV="production"
+ARG GOOSE_DATA_PATH="/usr/src/goose/data"
 ENV RUBY_YJIT_ENABLE="true" \
     RAILS_ENV="${RAILS_ENV}" \
+    GOOSE_DATA_PATH="${GOOSE_DATA_PATH}" \
     PATH="${PATH}:/home/ruby/.local/bin" \
     USER="ruby"
 

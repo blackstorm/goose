@@ -8,6 +8,5 @@ services:
     environment:
       SECRET_KEY_BASE: "secret"
       RAILS_LOG_TO_STDOUT: "1"
-      GOOSE_DATA_PATH: "/goose-data"
     volumes:
-      - ./docker-compose:/goose-data
+      - ./docker-compose:/usr/src/goose/data
