@@ -5,16 +5,20 @@
     <%= form_with url: login_index_path do |form| %>
       <div class="flex flex-col space-y-4">
         <div class="flex flex-col space-y-2">
-          <%= form.label :blog_name, "Admin username"%>
+          <%= form.label :blog_name, "Username"%>
           <%= form.text_field :username, class:"form-control", placeholder: "Admin", required: true, "maxlength": 10, "minLength": 1 %>
         </div>
         <div class="flex flex-col space-y-2">
-          <%= form.label :blog_name, "Admin password"%>
+          <%= form.label :blog_name, "Password"%>
           <%= form.password_field :password, class:"form-control", placeholder: "Admin", required: true, "maxlength": 20, "minLength": 6 %>
         </div>
         <%= form.button "Login", class:"btn" %>
       </div>
     <% end %>
+  </div>
+
+  <div class="text-center mt-4">
+    <span class="text-gray-400"><%= @blog_name %></span>
   </div>
 
   <div class="flex flex-col mt-2 mb-2 space-y-2">
