@@ -13,7 +13,6 @@
 ActiveRecord::Schema[7.0].define(version: 2022_12_26_072714) do
   create_table "articles", force: :cascade do |t|
     t.string "title", null: false
-    t.string "slug"
     t.text "content"
     t.string "status", default: "draft", null: false
     t.integer "category_id", null: false
