@@ -15,7 +15,16 @@
               </div>
             </div>
             <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control shadow-inner", placeholder: "Type content..." %>
-            <div class="text-xs text-gray-500" x-show="!preview">Attach images by dragging</div>
+            <div class="flex flex-row items-center justify-between text-xs text-gray-500" x-show="!preview">
+              <div>Attach images by dragging</div>
+              <div class="flex flex-row items-center space-x-2 hidden" id="image-upload-status">
+                <svg class="animate-spin h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span id="image-upload-status-progress-message">0/0 uploading</span>
+              </div>
+            </div>
             <div x-show="preview" id="content-preview" class="min-w-full border p-3 rounded prose"></div>
           </div>
         </div>
