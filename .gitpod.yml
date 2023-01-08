@@ -3,7 +3,7 @@
 # and commit this file to your remote git repository to share the goodness with others.
 
 tasks:
-  - init: yarn install && yarn run build && bin/setup
+  - init: rvm install $(cat .ruby-version) && yarn install && yarn run build && bin/setup
     command: bin/rails server
 
 

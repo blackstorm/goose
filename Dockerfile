@@ -19,6 +19,7 @@ RUN bash -c "set -o pipefail && apt-get update \
 
 USER ruby
 
+RUN bundle config --global frozen 1
 COPY --chown=ruby:ruby Gemfile* ./
 RUN bundle install --jobs "$(nproc)"
 
