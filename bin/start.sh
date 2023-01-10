@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "Clear pid"
+bundle exec rake tmp:pids:clear
+
 echo "Run migrations"
 bundle exec rake db:migrate
 
