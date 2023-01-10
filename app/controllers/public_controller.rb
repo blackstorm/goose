@@ -12,8 +12,6 @@ class PublicController < ApplicationController
     target = "#{target}.#{format}" if format.present?
     path = Pathname.new(target)
 
-    puts path
-
     if path.file?
       response.headers['Content-Length'] = File.size(path).to_s
       return send_file path, x_sendfile: true, disposition: "inline"
