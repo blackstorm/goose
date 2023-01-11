@@ -12,18 +12,13 @@
 Goose is a simple and lightweight text-style blog application that only uses three tables to store blog data. It's built on top of Ruby on Rails and SQLite 3. Goose has a beautiful admin interface and is very easy to use and install; it's a good choice for a personal blog.
 
 ## Preview
-<!-- ![Goose blog home](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-home.png)
-![Goose blog article](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-article.png)
-![Goose admin editor](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-editor.png)
-![Goose admin setting](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-setting.png) -->
-
-Solarized dark             |  Solarized Ocean
+Blog home             | Article detail
 :-------------------------:|:-------------------------:
-![Home](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-home.png)  |  ![Article](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-article.png)
+![Goose blog Home](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-home.png)  |  ![Goose blog article detail](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-article.png)
 
-Solarized dark             |  Solarized Ocean
+Admin & Editor             |  Admin settings
 :-------------------------:|:-------------------------:
-![Home](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-home.png)  |  ![Article](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-article.png)
+![Goose admin editor](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-editor.png) | ![Goose admin setting](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-setting.png)
 ## Quick start  
 
 ### Docker
