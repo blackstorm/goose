@@ -31,11 +31,11 @@
         </div>
         <div class="flex flex-col space-y-2">
           <%= form.label :admin_username, "Admin username" %>
-          <%= form.text_field :admin_username, class:"form-control", value:@settings[:admin_username], placeholder: "admin", required: true%>
+          <%= form.text_field :admin_username, class:"form-control", value:@settings[:admin_username], placeholder: "admin", required: true, disabled: @is_disable_update_admin %>
         </div>
         <div class="flex flex-col space-y-2">
           <%= form.label :admin_password, "Admin password" %>
-          <%= form.password_field :admin_password, class:"form-control", value:@settings[:admin_password], placeholder: "password", required: true%>
+          <%= form.password_field :admin_password, class:"form-control", value:@settings[:admin_password], placeholder: "password", required: true, disabled: @is_disable_update_admin %>
         </div>
         <%= form.button "Update", class:"btn" %>
       </div>
