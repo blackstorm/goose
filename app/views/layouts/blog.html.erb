@@ -30,8 +30,11 @@
   <%= link_to @blog_mates[:blog_name], root_path %>
 </h1>
 <%= yield %>
-<footer>
-  <i>Powered by <a href="https://github.com/blackstorm/goose" target="_blank">Goose</a></i>
-</footer>
+<% if @blog_mates[:blog_custom_html].nil? %>
+<%= render "blog/footer" %>
+<% else %>
+<%= @blog_mates[:blog_custom_html] && @blog_mates[:blog_custom_html].html_safe %>
+<%= render "blog/footer" %>
+<% end %>
 </body>
 </html>

@@ -24,10 +24,14 @@
           </div>
           <%= form.text_field :blog_background_color, class:"form-control", value:@settings[:blog_background_color], placeholder: "#ffffff" %>
         </div>
-
         <div class="flex flex-col space-y-2">
           <%= form.label :blog_name, "Blog name" %>
           <%= form.text_field :blog_name, class:"form-control", value:@settings[:blog_name], placeholder:@settings[:blog_name], required: true %>
+        </div>
+        <div class="flex flex-col space-y-2">
+          <%= form.label :blog_name, "Custom HTML" %>
+          <%= form.text_area :blog_custom_html, class:"form-control", value:@settings[:blog_custom_html], placeholder:@settings[:blog_custom_html], required: false %>
+          <p class="text-gray-500 text-xs">The custom HTML will be added to the bottom of your blog page's source code.</p>
         </div>
         <div class="flex flex-col space-y-2">
           <%= form.label :admin_username, "Admin username" %>
