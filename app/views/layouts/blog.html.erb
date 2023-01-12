@@ -31,11 +31,10 @@
 </h1>
 <%= yield %>
 <% if @blog_mates[:blog_custom_html].nil? %>
-  <%= render "blog/footer" %>
+<%= render "blog/footer" %>
 <% else %>
 <%= @blog_mates[:blog_custom_html] && @blog_mates[:blog_custom_html].html_safe %>
 <%= render "blog/footer" %>
 <% end %>
-
 </body>
 </html>
