@@ -5,7 +5,7 @@ require 'fileutils'
 module Admin
   class SettingsController < Admin::ApplicationController
 
-    SETTING_KEYS = %w(blog_name blog_background_color admin_username admin_password site_favicon)
+    SETTING_KEYS = %w(blog_name blog_background_color blog_custom_html admin_username admin_password site_favicon)
 
     def index
       @title = "Settings"

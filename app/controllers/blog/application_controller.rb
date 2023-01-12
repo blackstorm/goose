@@ -2,7 +2,7 @@
 
 module Blog
   class ApplicationController < ::ApplicationController
-    META_KEYS = %w(blog_name blog_background_color)
+    META_KEYS = %w(blog_name blog_background_color blog_custom_html)
 
     layout "blog"
     before_action :set_meta_values
