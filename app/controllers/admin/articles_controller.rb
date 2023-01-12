@@ -6,12 +6,13 @@ module Admin
     def index
       @title = "Articles"
 
-      query = Article.order(id: :desc).includes(:category)
-      query = query.where(status: params[:status]) if params[:status].present?
-      query = query.where(category_id: params[:category_id]) if params[:category_id].present?
-
       @query_status = params[:status]
       @query_category_id = params[:category_id]
+
+      query = Article.order(id: :desc).includes(:category)
+      query = query.where(status: @query_status) if @query_status.present?
+      query = query.where(category_id: @query_category_id) if @query_category_id.present?
+
       @categories = Category.all
       @articles = query.all
 
