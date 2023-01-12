@@ -1,19 +1,20 @@
 <div class="container md:w-[48rem] mx-auto p-2 md:p-0">
 
-  <div class="flex flex-row space-x-4 mt-4 md:mt-10">
-
-    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none">
-      <option value="Status" selected>Status</option>
-      <option value="Published">Published</option>
-      <option value="Draft">Draft</option>
+  <div class="flex flex-row space-x-4 mt-4 md:mt-10" data-controller="articles_filter">
+    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none" id="status-selector">
+      <option value="_status" <%= @query_status.nil? ? "selected" : "" %>>Status</option>
+      <option value="published" <%= @query_status == "published" ? "selected" : "" %>>Published</option>
+      <option value="draft" <%= @query_status == "draft" ? "selected" : "" %>>Draft</option>
     </select>
 
-    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none">
-      <option value="Category" selected>Category</option>
-      <option value="Published">Default</option>
-      <option value="Draft">Rails</option>
+    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none" id="category-selector">
+      <option value="_category" <%= @query_category_id.nil? ? "selected" : "" %>>Category</option>
+      <% @categories.each do |c| %>
+        <option value="<%= c.id %>" <%= @query_category_id == c.id.to_s ? "selected" : "" %>>
+          <%= c.name %>
+        </option>
+      <% end %>
     </select>
-
   </div>
 
   <div class="flex flex-col bg-white border rounded md:mt-10 mt-4">
