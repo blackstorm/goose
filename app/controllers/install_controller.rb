@@ -11,11 +11,14 @@ class InstallController < ApplicationController
 
   def install
     Option.transaction do
-      Option.create!(key: "blog_name", value: params[:blog_name])
-      Option.create!(key: "blog_background_color", value: "#ffffff")
-      Option.create!(key: "admin_username", value: params[:admin_username])
-      Option.create!(key: "admin_password", value: BCrypt::Password.create(params[:admin_password]))
-      Option.create!(key: "goose_installed_at", value: Time.now.to_s)
+      options = [
+        { name: "blog_name", value: params[:blog_name] },
+        { name: "blog_background_color", value: "#fff" },
+        { name: "admin_username", value: params[:admin_username] },
+        { name: "admin_password", value: BCrypt::Password.create(params[:admin_password]) },
+        { name: "goose_installed_at", value: Time.now.to_s },
+      ]
+      Option.insert_all! options
       create_hello_world_article
       $is_goose_installed = true
     end
