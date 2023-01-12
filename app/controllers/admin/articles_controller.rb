@@ -5,7 +5,16 @@ module Admin
 
     def index
       @title = "Articles"
-      @articles = Article.order(id: :desc).includes(:category).all
+
+      query = Article.order(id: :desc).includes(:category)
+      query = query.where(status: params[:status]) if params[:status].present?
+      query = query.where(category_id: params[:category_id]) if params[:category_id].present?
+
+      @query_status = params[:status]
+      @query_category_id = params[:category_id]
+      @categories = Category.all
+      @articles = query.all
+
       render "admin/article"
     end
 

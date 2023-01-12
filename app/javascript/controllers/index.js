@@ -5,4 +5,7 @@
 import { application } from "./application"
 
 import EditorController from "./editor_controller"
+import ArticlesFilterController from './articles_filter_controller';
+
 application.register("editor", EditorController)
+application.register("articles_filter", ArticlesFilterController)
