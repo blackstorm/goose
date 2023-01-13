@@ -53,9 +53,9 @@ In order to safely run Goose, ensure the SECRET_KEY_BASE environment value is se
 | SECRET_KEY_BASE | Secret key base for rails | `NULL` |
 | RAILS_LOG_TO_STDOUT | Log to stdout | `NULL` |
 
-## [Live Demo](https://demo.getgooseblog.com) 
+## [🔥 Live Demo](https://demo.getgooseblog.com) 
 
-[Go to Admin](https://demo.getgooseblog.com/admin)
+[🔒 Admin](https://demo.getgooseblog.com/admin)
 
 ```
 username: admin
