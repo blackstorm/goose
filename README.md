@@ -61,3 +61,6 @@ In order to safely run Goose, ensure the SECRET_KEY_BASE environment value is se
 username: admin
 password: adminadmin
 ```
+
+## The Logo
+Goose logo from [Icons8](https://icons8.com/icon/voq5kWfX8meG/flying-duck)
