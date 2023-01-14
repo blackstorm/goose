@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/blackstorm/goose/v0.0.1/app/assets/images/logo.png" width="48" height="48" />
+
 # Goose
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/blackstorm/goose/release.yml)](https://github.com/blackstorm/goose/actions/workflows/release.yml)
