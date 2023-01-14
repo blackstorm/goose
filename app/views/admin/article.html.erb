@@ -1,13 +1,13 @@
 <div class="container md:w-[48rem] mx-auto p-2 md:p-0">
 
   <div class="flex flex-row space-x-4 mt-4 md:mt-10" data-controller="articles_filter">
-    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none" id="status-selector">
+    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none" data-articles_filter-target="status" data-action="change->articles_filter#query">
       <option value="_status" <%= @query_status.nil? ? "selected" : "" %>>Status</option>
       <option value="published" <%= @query_status == "published" ? "selected" : "" %>>Published</option>
       <option value="draft" <%= @query_status == "draft" ? "selected" : "" %>>Draft</option>
     </select>
 
-    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none" id="category-selector">
+    <select class="bg-gray-200 rounded-full hover:bg-gray-300 border-0 outline-none focus:outline-none" data-articles_filter-target="category" data-action="change->articles_filter#query">
       <option value="_category" <%= @query_category_id.nil? ? "selected" : "" %>>Category</option>
       <% @categories.each do |c| %>
         <option value="<%= c.id %>" <%= @query_category_id == c.id.to_s ? "selected" : "" %>>
@@ -28,7 +28,7 @@
             <div class="w-full">
               <div class="text-sm text-gray-400 flex items-center flex-row space-x-2">
                 <span>#<%= a.category.name %></span>
-                <date class="text-gray-400"><%= a.created_at.strftime('%d %b, %Y') %></date>
+                <span class="text-gray-400"><%= a.created_at.strftime('%d %b, %Y') %></span>
               </div>
             </div>
           </div>
