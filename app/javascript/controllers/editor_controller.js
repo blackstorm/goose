@@ -7,6 +7,9 @@ import { uploadImage } from '../uploder'
 window.marked = marked
 
 export default class extends Controller {
+
+    static targets = ["uploadProgress", "uploadProgressMessage"]
+
     connect() {
         const editor = document.getElementById('article_content')
         autosize(editor);
@@ -69,29 +72,19 @@ export default class extends Controller {
     }
 
     showImagesUploadProgress() {
-        removeClasses(
-            document.getElementById("images-upload-progress"),
-            ["hidden"]
-        )
+        removeClasses(this.uploadProgressTarget, ["hidden"])
     }
 
     hiddenImagesUploadProgress() {
-        addClasses(
-            document.getElementById("images-upload-progress"),
-            ["hidden"]
-        )
+        addClasses(this.uploadProgressTarget, ["hidden"])
     }
 
     updateImagesUploadProgressMessage(message) {
-        document.getElementById("images-upload-progress-message").innerHTML = message
+        this.uploadProgressMessageTarget.innerText = message
     }
 
     append2Editor(editor, value) {
-        if (editor.value === "") {
-            editor.value += value;
-        } else {
-            editor.value += value.startsWith("\n") ? value: `\n${value}`
-        }
+        editor.value += (editor.value === "" || value.startsWith("\n")) ? value: `\n${value}`
         autosize.update(editor)
     }
 

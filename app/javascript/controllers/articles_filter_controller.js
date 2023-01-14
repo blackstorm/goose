@@ -3,18 +3,11 @@ import {Turbo} from "@hotwired/turbo-rails";
 
 export default class extends Controller {
 
-    connect() {
-        this.statusSelector = document.getElementById('status-selector');
-        this.categorySelector = document.getElementById('category-selector');
+    static targets = [ "status", "category" ]
 
-        [this.statusSelector, this.categorySelector].forEach(selector => {
-            selector.addEventListener('change', this.onSelectChange.bind(this));
-        })
-    }
-
-    onSelectChange() {
-        const status = this.statusSelector.value;
-        const categoryId = this.categorySelector.value;
+    query() {
+        const status = this.statusTarget.value;
+        const categoryId = this.categoryTarget.value;
 
         let path = "/admin/articles?";
         if (status !== "_status")
