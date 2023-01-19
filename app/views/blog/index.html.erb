@@ -1,9 +1,9 @@
 <div>
   <h3>Articles</h3>
   <% @articles.each do |a| %>
-    <div>
+    <article>
       <%= link_to a.title, article_path(a) %>
-    </div>
+    </article>
   <% end %>
   <%= render "blog/category" %>
 </div>

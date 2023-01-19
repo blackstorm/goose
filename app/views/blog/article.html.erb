@@ -1,6 +1,6 @@
 <h1><%= @article.title %></h1>
 <i>Published at <%= @article.created_at.strftime('%d %b, %Y') %>, last modified at <%= @article.updated_at.strftime('%d %b, %Y') %></i>
 <hr>
-<div>
+<article>
   <%= @article.content_to_html.html_safe %>
-</div>
+</article>

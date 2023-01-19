@@ -22,6 +22,13 @@
         background-color: #CCCCCC;
         border-radius: 2px;
     }
+
+    @media only screen and (min-width: 2000px) {
+        body {
+            width: 960px;
+            margin: 0 auto;
+        }
+    }
   </style>
 </head>
 
@@ -29,7 +36,9 @@
 <h1>
   <%= link_to @blog_mates[:blog_name], root_path %>
 </h1>
-<%= yield %>
+<main>
+  <%= yield %>
+</main>
 <% if @blog_mates[:blog_custom_html].nil? %>
 <%= render "blog/footer" %>
 <% else %>
