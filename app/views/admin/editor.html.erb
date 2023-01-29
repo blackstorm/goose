@@ -14,7 +14,7 @@
                 <button type="button" class="btn btn-sm" :class="!preview || 'bg-blue-700'" @click="preview=true;update_content_preview()">Preview</button>
               </div>
             </div>
-            <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control shadow-inner", placeholder: "Add content" %>
+            <%= form.text_area :content, rows: "20", "x-show":"!preview", class: "form-control shadow-inner", placeholder: "Add markdown content" %>
             <div class="flex flex-row items-center justify-between text-xs text-gray-500" x-show="!preview">
               <div>Attach images by dragging</div>
               <div class="flex flex-row items-center space-x-2 hidden" data-editor-target="uploadProgress">
