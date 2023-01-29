@@ -24,4 +24,16 @@
   .admin-nav-link.active {
     @apply text-blue-600 font-medium
   }
+  .pagination {
+    @apply flex space-x-2 text-gray-400 items-center
+  }
+  .pagination span {
+    @apply p-1
+  }
+  .pagination span:hover {
+    @apply text-gray-700
+  }
+  .page.current {
+    @apply text-blue-700
+  }
 }

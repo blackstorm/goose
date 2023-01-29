@@ -14,7 +14,7 @@ module Admin
       query = query.where(category_id: @query_category_id) if @query_category_id.present?
 
       @categories = Category.all
-      @articles = query.all
+      @articles = query.page params[:page]
 
       render "admin/article"
     end
