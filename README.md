@@ -11,7 +11,7 @@
 **Tired of using WordPress and page generators? try Goose🦆**
 
 ## Overview
-Goose is a simple and lightweight text-style blog application that only uses three tables to store blog data. It's built on top of Ruby on Rails and SQLite 3. Goose has a beautiful admin interface and is very easy to use and install, it's a good choice for a personal blog.
+Goose is a simple and lightweight text-style blog application that only uses three tables to store blog data. It's built on top of Ruby on Rails and SQLite 3. Goose has a beautiful admin interface and `markdown` support, it's very easy to use, it's a good choice for a personal blog.
 
 ## Preview
 Blog home             | Article detail
@@ -26,7 +26,11 @@ Admin & Editor             |  Admin settings
 ### Docker
 
 ```
-docker run -it -p 3000:3000 -e SECRET_KEY_BASE=happy-goose-blog -e RAILS_LOG_TO_STDOUT=1 goose/goose:v0.1.0-beta.3
+docker pull gooseblog/gooseblog:v0.1.1-beta.2
+```
+
+```
+docker run -it -p 3000:3000 -e SECRET_KEY_BASE=happy-goose-blog -e RAILS_LOG_TO_STDOUT=1 gooseblog/gooseblog:v0.1.1-beta.2
 ```
 
 ### Docker Compose
@@ -37,7 +41,7 @@ version: "3"
 
 services:
   goose:
-    image: goose/goose:v0.1.0-beta.3
+    image: gooseblog/gooseblog:v0.1.1-beta.2
     ports:
       - "80:3000"
     environment:
