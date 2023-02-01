@@ -1,4 +1,4 @@
-require 'kramdown'
+require "redcarpet"
 
 class Article < ApplicationRecord
   paginates_per 10
@@ -13,8 +13,15 @@ class Article < ApplicationRecord
     self.status == "draft"
   end
 
+  RENDERDER = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {
+    no_styles: true,
+    autolink: true,
+    tables: true,
+    fenced_code_blocks: true
+  })
+
   def content_to_html
-    Kramdown::Document.new(self.content).to_html
+    RENDERDER.render(self.content)
   end
 
   def created_at_datetime_local_field
