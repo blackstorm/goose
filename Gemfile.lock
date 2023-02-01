@@ -122,8 +122,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kramdown (2.4.0)
-      rexml
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -187,6 +185,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redcarpet (3.6.0)
     regexp_parser (2.6.1)
     rexml (3.2.5)
     ruby-vips (2.1.4)
@@ -248,9 +247,9 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari (~> 1.2, >= 1.2.2)
-  kramdown (~> 2.4)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  redcarpet (~> 3.6)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.6)

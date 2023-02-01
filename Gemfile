@@ -71,7 +71,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'kramdown', '~> 2.4'
+gem 'redcarpet', '~> 3.6'
 gem 'fileutils', '~> 1.7'
 gem 'carrierwave', '>= 3.0.0.beta', '< 4.0'
 gem 'kaminari', '~> 1.2', '>= 1.2.2'
