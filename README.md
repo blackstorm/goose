@@ -26,11 +26,11 @@ Admin & Editor             |  Admin settings
 ### Docker
 
 ```
-docker pull gooseblog/gooseblog:v0.1.1-beta.2
+docker pull gooseblog/gooseblog:v0.1.1
 ```
 
 ```
-docker run -it -p 3000:3000 -e SECRET_KEY_BASE=happy-goose-blog -e RAILS_LOG_TO_STDOUT=1 gooseblog/gooseblog:v0.1.1-beta.2
+docker run -it -p 3000:3000 -e SECRET_KEY_BASE=happy-goose-blog -e RAILS_LOG_TO_STDOUT=1 gooseblog/gooseblog:v0.1.1
 ```
 
 ### Docker Compose
@@ -41,7 +41,7 @@ version: "3"
 
 services:
   goose:
-    image: gooseblog/gooseblog:v0.1.1-beta.2
+    image: gooseblog/gooseblog:v0.1.1
     ports:
       - "80:3000"
     environment:
