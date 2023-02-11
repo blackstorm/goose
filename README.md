@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/blackstorm/goose/v0.0.1/app/assets/images/logo.png" width="48" height="48" />
 
-# Goose
+# 🦆 Goose - A Simple and Lightweight Blog Application
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/blackstorm/goose/release.yml)](https://github.com/blackstorm/goose/actions/workflows/release.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/gooseblog/gooseblog)](https://hub.docker.com/r/gooseblog/gooseblog)
