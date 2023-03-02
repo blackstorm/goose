@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "blog/home#index"
   get "/articles/:id", to: "blog/articles#show", as: :article
   get "/categories/:id", to: "blog/categories#show", as: :category
+  get "/feed", to: "blog/articles#feed", format: 'xml', as: :feed
 
   get "/public/uploads/*path", to: "public#uploads"
 
