@@ -21,6 +21,12 @@ Blog home             | Article detail
 Admin & Editor             |  Admin settings
 :-------------------------:|:-------------------------:
 ![Goose admin editor](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-editor.png) | ![Goose admin setting](https://raw.githubusercontent.com/blackstorm/goose/main/doc/images/preview-setting.png)
+
+
+## Features
+### RSS
+Get your blog rss feed by `https://your-domain/feed`
+
 ## Quick start  
 
 ### Docker

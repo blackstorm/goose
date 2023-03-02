@@ -13,5 +13,10 @@ module Blog
       render "blog/article"
     end
 
+    def feed
+      @title = @blog_mates[:blog_name]
+      @articles = Article.where(status: "published").order(created_at: :desc).all
+      render "blog/feed", content_type: "application/rss+xml"
+    end
   end
 end
