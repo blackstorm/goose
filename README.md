@@ -40,7 +40,7 @@ docker run -it -p 3000:3000 -e SECRET_KEY_BASE=happy-goose-blog -e RAILS_LOG_TO_
 ```
 
 ### Docker Compose
-Highly recommend use docker-compose to run goose. Create a `docker-compose.yml` in your server workspace then run command `docker compose up -d`
+Create a `docker-compose.yml` file in your server workspace then run command `docker compose up -d`
 
 ```yaml
 version: "3"
@@ -58,16 +58,16 @@ services:
 ```
 
 ## Environment variables
-In order to safely run Goose, ensure the SECRET_KEY_BASE environment value is set.
+In order to safely to run Goose, ensure is set the `SECRET_KEY_BASE` environment value.
 
 | Name | Description | Default |
 | --- | --- | --- |
 | SECRET_KEY_BASE | Secret key base for rails | `NULL` |
 | RAILS_LOG_TO_STDOUT | Log to stdout | `NULL` |
 
-## [🔥 Live Demo](https://demo.getgooseblog.com) 
+## [Live Demo 🔥](https://demo.getgooseblog.com) 
 
-[🔒 Admin](https://demo.getgooseblog.com/admin)
+[Admin Interface](https://demo.getgooseblog.com/admin)
 
 ```
 username: admin
