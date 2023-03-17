@@ -8,7 +8,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/blackstorm/goose?logo=github)](https://github.com/blackstorm/goose/releases)
 
 
-**Tired of using WordPress and page generators? try Goose🦆**
+**Tired of using WordPress and static page generators? try Goose 🦆 now**
 
 ## Overview
 Goose is a simple and lightweight text-style blog application that only uses three tables to store blog data. It's built on top of Ruby on Rails and SQLite 3. Goose has a beautiful admin interface and `markdown` support, it's very easy to use, it's a good choice for a personal blog.
