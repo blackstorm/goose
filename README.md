@@ -78,3 +78,7 @@ password: adminadmin
 Goose logo from [Icons8](https://icons8.com/icon/voq5kWfX8meG/flying-duck)
 
 [Do you interest design a logo for goose?](https://github.com/blackstorm/goose/issues/42)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=blackstorm/goose&type=Date)](https://star-history.com/#blackstorm/goose&Date)
