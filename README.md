@@ -10,6 +10,10 @@
 
 **Tired of using WordPress and static page generators? try Goose 🦆 now**
 
+## Want an easier way to create your blog?
+
+Use GitHub issues as your blog, try [🗿Gitblog](https://www.gitblog.io)
+
 ## Overview
 Goose is a simple and lightweight text-style blog application that only uses three tables to store blog data. It's built on top of Ruby on Rails and SQLite 3. Goose has a beautiful admin interface and `markdown` support, it's very easy to use, it's a good choice for a personal blog.
 
@@ -78,10 +82,6 @@ password: adminadmin
 Goose logo from [Icons8](https://icons8.com/icon/voq5kWfX8meG/flying-duck)
 
 [Do you interest design a logo for goose?](https://github.com/blackstorm/goose/issues/42)
-
-## Want an easier way to create your blog?
-
-Use GitHub issues as your blog, try [🗿Git2Blog](https://www.git2blog.com)
 
 ## Star History
 
